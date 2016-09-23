@@ -11,26 +11,13 @@
  * @since 1.0.0
  */
 
-// Comments Template
+/**
+ * Map Shortcode
+ */
 
 add_action('init', 'fsn_init_comments', 12);
 function fsn_init_comments() {	
-	
-	//OUTPUT SHORTCODE
-	function fsn_comments_shortcode( $atts, $content = null ) {
-		
-		$output = '<div class="fsn-comments '. fsn_style_params_class($atts) .'">';
-			ob_start();
-			comments_template();
-			$output .= ob_get_clean();
-		$output .= '</div>';
-		
-		return $output;
-	}
-	
-	add_shortcode( 'fsn_comments', 'fsn_comments_shortcode' );
 			
-	//MAP SHORTCODE
 	if (function_exists('fsn_map')) {
 		fsn_map(array(
 			'name' => __('Comments', 'fusion-extension-comments'),
@@ -40,5 +27,22 @@ function fsn_init_comments() {
 		));
 	}
 }
+
+/**
+ * Output Shortcode
+ */
+
+function fsn_comments_shortcode( $atts, $content = null ) {
+	
+	$output = '<div class="fsn-comments '. fsn_style_params_class($atts) .'">';
+		ob_start();
+		comments_template();
+		$output .= ob_get_clean();
+	$output .= '</div>';
+	
+	return $output;
+}
+
+add_shortcode( 'fsn_comments', 'fsn_comments_shortcode' );
 
 ?>
