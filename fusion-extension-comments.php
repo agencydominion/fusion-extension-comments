@@ -4,7 +4,7 @@
  */
 /**
  * Plugin Name: Fusion : Extension - Comments
- * Plugin URI: http://fusion.1867dev.com
+ * Plugin URI: http://www.agencydominion.com/fusion/
  * Description: Comments Extension Package for Fusion.
  * Version: 1.1.0
  * Author: Agency Dominion
