@@ -9,6 +9,8 @@
  * Version: 1.1.2
  * Author: Agency Dominion
  * Author URI: http://agencydominion.com
+ * Text Domain: fusion-extension-comments
+ * Domain Path: /languages/
  * License: GPL2
  */
  
@@ -25,11 +27,22 @@ class FusionExtensionComments	{
 	public function __construct() {
 						
 		// Initialize the language files
-		load_plugin_textdomain( 'fusion-extension-comments', false, plugin_dir_url( __FILE__ ) . 'languages' );
+		add_action('plugins_loaded', array($this, 'load_textdomain'));
 		
 		// Plugin activation / deactivation hooks
 		register_activation_hook( __FILE__, array($this, 'plugin_activated') );
 		register_deactivation_hook( __FILE__, array($this, 'plugin_deactivated') );
+	}
+	
+	/**
+	 * Load Textdomain
+	 *
+	 * @since 1.1.3
+	 *
+	 */
+	 
+	public function load_textdomain() {
+		load_plugin_textdomain( 'fusion-extension-comments', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 	
 	/**
